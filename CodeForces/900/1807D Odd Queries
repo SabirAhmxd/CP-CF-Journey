@@ -1,0 +1,40 @@
+
+
+#include <bits/stdc++.h> 
+using namespace std;
+void solve(){
+  long long n , q;
+  cin >> n >> q;
+  vector <long long> arr(n);
+  for(int a=0;a<n;a++){
+    cin >> arr[a];
+  }
+  long long realsum=0;
+  for(int a=0;a<n;a++){
+    realsum+=arr[a];
+  }
+  vector<long long> pre(n+1,0);
+  
+  for(int a=1;a<=n;a++){
+     pre[a]=arr[a-1]+pre[a-1];
+  }
+
+  while(q--){
+    long long l,r,k;
+    cin >> l>>r>>k;
+    long long newsum=(r-l+1)*k;
+    long long oldsum = pre[r]-pre[l-1];
+    long long resultant=realsum-oldsum+newsum;
+    if(resultant%2==0)cout << "NO\n";
+    else cout << "YES\n";
+    }
+
+}
+  
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    int t; cin >> t;
+    while(t--) solve();
+    return 0;
+}
