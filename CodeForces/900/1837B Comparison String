@@ -1,0 +1,33 @@
+// Problem: 1837B - Comparison String (Rating: 900)
+// Logic: The length of the longest consecutive sequence of identical characters ('<' or '>') 
+// Solved it on first try haha
+
+#include <bits/stdc++.h> 
+using namespace std;
+void solve(){
+  int n;
+  cin >> n;
+  string s;
+  cin >> s;
+  int curr_streak=1;
+  int max_streak=1;
+  for(int a=1;a<n;a++){
+    if(s[a]==s[a-1]){
+      curr_streak++;
+    }
+    else {
+      curr_streak=1;
+      if(curr_streak>max_streak)max_streak=curr_streak;
+  }
+  if(curr_streak>max_streak)max_streak=curr_streak;
+  }
+  cout << max_streak+1<<"\n";
+}
+  
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    int t; cin >> t;
+    while(t--) solve();
+    return 0;
+}
